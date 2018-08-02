@@ -1,7 +1,12 @@
 const path = require('path');
+const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
+process.env.NODE_ENV = process.env.ENV || 'development';
 
+if(process.env.NODE_ENV === 'develpoment'){
+  require('dotenv').config({path: '.env.development'}); 
+}
 module.exports = (env) => {
   const isProduction = env =='production';
   const CSSExtract = new ExtractTextPlugin('styles.css');
@@ -29,7 +34,10 @@ module.exports = (env) => {
     }]
   },
   plugins:[
-    CSSExtract
+    CSSExtract,
+    new webpack.DefinePlugin({
+      'process.env.FIREBASE_API_KEY'
+    })
   ],
   devtool: isProduction ? 'source-map' : 'cheap-module-eval-source-map',
   devServer: {

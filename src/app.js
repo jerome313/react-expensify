@@ -3,9 +3,8 @@ import ReactDOM from 'react-dom';
 import AppRouter from './routers/AppRouter';
 import {Provider} from 'react-redux';
 import configureStore from './store/configureStore';
-import { addExpense } from './actions/expenses';
-import { setTextFilter } from './actions/filters';
 import getVisibleExpenses from './selectors/expenses';
+import './firebase/firebase';
 import './styles/styles.scss'
 import 'normalize.css/normalize.css';
 
