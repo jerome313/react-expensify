@@ -4,7 +4,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 process.env.NODE_ENV = process.env.ENV || 'development';
 
-if(process.env.NODE_ENV === 'develpoment'){
+if(process.env.NODE_ENV === 'development'){
   require('dotenv').config({path: '.env.development'}); 
 }
 module.exports = (env) => {
@@ -33,6 +33,7 @@ module.exports = (env) => {
      })
     }]
   },
+  devtool: isProduction ? 'source-map' : 'cheap-source-map',
   plugins:[
     CSSExtract,
     new webpack.DefinePlugin({
@@ -44,7 +45,6 @@ module.exports = (env) => {
       'process.env.FIREBASE_MESSAGING_SENDER_ID': JSON.stringify(process.env.FIREBASE_MESSAGING_SENDER_ID)
     })
   ],
-  devtool: isProduction ? 'source-map' : 'cheap-module-eval-source-map',
   devServer: {
     contentBase: path.join(__dirname,'public'),
     historyApiFallback: true,
