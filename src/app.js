@@ -7,6 +7,7 @@ import { setStartExpenses } from './actions/expenses';
 import { login,logout } from './actions/auth';
 import getVisibleExpenses from './selectors/expenses';  
 import {firebase} from './firebase/firebase';
+import LoadingPage from './components/LoadingPage'
 import './styles/styles.scss'
 import 'normalize.css/normalize.css';
 
@@ -20,7 +21,7 @@ const jsx = (
   <AppRouter/>
 </Provider>
 );
-ReactDOM.render(<p>loading</p>,document.getElementById('app'));
+ReactDOM.render(<LoadingPage/>,document.getElementById('app'));
 
 
 let hasRendered = false;

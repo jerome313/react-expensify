@@ -16,7 +16,7 @@ export const history = createHistory();
   <Switch>
   <PublicRoute path="/" component={Login} exact={true}/>
   <PrivateRoute path="/dashboard" component={ExpensifyDashboardPage}/>
-  <PrivateRoute path="/add" component={AddExpensePage}/>
+  <PrivateRoute path="/create" component={AddExpensePage}/>
   <PrivateRoute path="/edit/:id" component={EditExpensePage}/>
   <Route component={PageNotFound}/>
   </Switch>
